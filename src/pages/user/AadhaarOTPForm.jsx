@@ -71,8 +71,9 @@ const AadhaarOTPForm = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   // const hotel_id = searchParams.get("hotel_id") || "";
-  const location = useLocation();
-  const hotel_id = location.state?.hotel_id || "No Hotel ID Found";
+  // Extract hotel_id from the query parameter named "token"
+  const hotel_id = searchParams.get("token") || "No Hotel ID Found";
+  console.log("Hotel ID in AadhaarOTP:", hotel_id)
   console.log("location",location);
   console.log("Hotel ID in AadhaarOTP:", hotel_id); // Debugging
 
