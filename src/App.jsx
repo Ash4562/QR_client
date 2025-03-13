@@ -2,11 +2,11 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserHotelRegister from "./pages/user/UserHotelRegister";
 import GenerateHotelsQr from "./pages/user/GenerateHotelsQr";
-import AadhaarOTPForm from "./pages/user/AadhaarOTPForm";
+import AadhaarOTP from "./pages/user/AadhaarOTPForm";
 import SubmitOtp from "./pages/user/SumitOtp";
 import UserDetailForm from "./pages/user/UserDetailForm";
 
-  
+
 const App = () => {
 
   return (
@@ -36,7 +36,7 @@ const App = () => {
           <Route
             path="/AadhaarOTP"
             element={
-                <AadhaarOTPForm />
+              <AadhaarOTP />
      
             }
           /> 
