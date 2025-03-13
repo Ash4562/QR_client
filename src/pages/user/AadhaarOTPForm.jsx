@@ -73,7 +73,7 @@ const AadhaarOTPForm = () => {
   // const hotel_id = searchParams.get("hotel_id") || "";
   const location = useLocation();
   const hotel_id = location.state?.hotel_id || "No Hotel ID Found";
-  console.log("location", location);
+  console.log("location",location);
   console.log("Hotel ID in AadhaarOTP:", hotel_id); // Debugging
 
   const [aadhaarNumber, setAadhaarNumber] = useState("");
@@ -102,7 +102,7 @@ const AadhaarOTPForm = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
       {/* Logo */}
-
+     
       {/* Card Container */}
       <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md">
       <div className="flex justify-center mb-6">

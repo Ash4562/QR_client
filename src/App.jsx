@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserHotelRegister from "./pages/user/UserHotelRegister";
 import GenerateHotelsQr from "./pages/user/GenerateHotelsQr";
+
 import AadhaarOTPForm from "./pages/user/AadhaarOTPForm";
 import SubmitOtp from "./pages/user/SumitOtp";
 import UserDetailForm from "./pages/user/UserDetailForm";
-import AadhaarOTP from './components/AadhaarOTP'; 
 // import AdminSideBar from "./pages/Admin/AdminSideBar";
 // import AdminHotels from "./pages/Admin/AdminHotels";
 // import AdminHotelDetails from "./pages/Admin/AdminHotelDetails";
@@ -26,6 +26,9 @@ import AadhaarOTP from './components/AadhaarOTP';
 
 const App = () => {
 
+  // const isAuthenticated = !!localStorage.getItem("token");
+  // console.log(isAuthenticated);
+
 
 
   return (
@@ -37,6 +40,110 @@ const App = () => {
           <Route path="/login" element={<AdminLogin />} />
           <Route path="/AdminVerify" element={<AdminVerify />} />
 
+
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute >
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/AdminHotels"
+            element={
+              <ProtectedRoute >
+                <AdminHotels />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/AdminHotelDetails"
+            element={
+              <ProtectedRoute >
+                <AdminHotelDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/AdminCreateUser"
+            element={
+              <ProtectedRoute >
+                <AdminCreateUser />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/UserDetails"
+            element={
+              <ProtectedRoute >
+                <UserDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/AdminPayments"
+            element={
+              <ProtectedRoute >
+                <AdminPayments />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/AdminPendingApprovals"
+            element={
+              <ProtectedRoute >
+                <AdminPendingApprovals />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/HotelPenApoDetails"
+            element={
+              <ProtectedRoute >
+                <HotelPenApoDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/SelectedHotelUsers/:hotelId"
+            element={
+              <ProtectedRoute >
+                <SelectedHotelUsers />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/AllHotelUsers"
+            element={
+              <ProtectedRoute >
+                <AllHotelUsers />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/AdminUserDetails"
+            element={
+              <ProtectedRoute >
+                <AdminUserDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/AdminUserDetailsCard"
+            element={
+              <ProtectedRoute >
+                <AdminUserDetailsCard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/AdminHotelDetailsCard"
+            element={
+              <ProtectedRoute >
+                <AdminHotelDetailsCard />
+              </ProtectedRoute>
+            }
           /> */}
           <Route
             path="/"
