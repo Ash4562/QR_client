@@ -70,12 +70,9 @@ import { useGenerateAadhaarOTPMutation } from "../../redux/hotelUserApi.jsx/user
 const AadhaarOTPForm = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  // const hotel_id = searchParams.get("hotel_id") || "";
-  // Extract hotel_id from the query parameter named "token"
+  // Extract hotel_id from the "token" query parameter
   const hotel_id = searchParams.get("token") || "No Hotel ID Found";
-  console.log("Hotel ID in AadhaarOTP:", hotel_id)
-  console.log("location",location);
-  console.log("Hotel ID in AadhaarOTP:", hotel_id); // Debugging
+  console.log("Hotel ID in AadhaarOTP:", hotel_id);
 
   const [aadhaarNumber, setAadhaarNumber] = useState("");
   const [generateOTP, { data, isLoading, error }] = useGenerateAadhaarOTPMutation();
