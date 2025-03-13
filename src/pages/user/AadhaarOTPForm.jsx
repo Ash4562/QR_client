@@ -70,11 +70,9 @@ import { useGenerateAadhaarOTPMutation } from "../../redux/hotelUserApi.jsx/user
 const AadhaarOTPForm = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  // const hotel_id = searchParams.get("hotel_id") || "";
   const location = useLocation();
-  const hotel_id_from_state = location.state?.hotel_id || "";
-  const hotel_id_from_token = searchParams.get("token") || "";
-  const hotel_id = hotel_id_from_state || hotel_id_from_token || "No Hotel ID Found";
-
+  const hotel_id = location.state?.hotel_id || "No Hotel ID Found";
   console.log("location", location);
   console.log("Hotel ID in AadhaarOTP:", hotel_id); // Debugging
 
@@ -95,6 +93,7 @@ const AadhaarOTPForm = () => {
       navigate("/SubmitOtp", {
         state: { hotel_id, transactionId, aadhaarNumber },
       });
+
     } catch (err) {
       toast.error("Failed to send OTP. Try again.");
     }
@@ -102,13 +101,19 @@ const AadhaarOTPForm = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
+      {/* Logo */}
+
+      {/* Card Container */}
+      <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md">
       <div className="flex justify-center mb-6">
         <img src="/justChink.jpeg" alt="Company Logo" className="w-20 sm:w-24 h-auto" />
       </div>
-      <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8 w-full max-w-sm sm:max-w-md">
+
         <h2 className="text-xl sm:text-2xl font-semibold text-center text-gray-700">
           Generate Aadhaar OTP
         </h2>
+
+        {/* Input Field */}
         <div className="mt-4">
           <input
             type="text"
@@ -118,6 +123,8 @@ const AadhaarOTPForm = () => {
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
+
+        {/* Submit Button */}
         <button
           onClick={handleGenerateOTP}
           className="w-full mt-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition duration-200"
@@ -125,6 +132,8 @@ const AadhaarOTPForm = () => {
         >
           {isLoading ? "Generating OTP..." : "Generate OTP"}
         </button>
+
+        {/* Error & Success Messages */}
         {error && <p className="text-red-500 text-sm mt-2">Error generating OTP</p>}
         {data && (
           <p className="text-green-500 text-sm mt-2">
