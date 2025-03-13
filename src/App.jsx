@@ -6,7 +6,7 @@ import AadhaarOTPForm from "./pages/user/AadhaarOTPForm";
 import SubmitOtp from "./pages/user/SumitOtp";
 import UserDetailForm from "./pages/user/UserDetailForm";
 
-
+  
 const App = () => {
 
   return (

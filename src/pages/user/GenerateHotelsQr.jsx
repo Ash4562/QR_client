@@ -7,6 +7,12 @@ const GenerateHotelsQr = () => {
   const hotelIdFromLocation = location.state?.hotel_id || "";
   const [hotel_id, setHotel_id] = useState(hotelIdFromLocation);
   const [generateQR, { data, isLoading, error }] = useGenerateQRMutation();
+  const [currentUrl, setCurrentUrl] = useState("");
+
+  useEffect(() => {
+    // Get the current origin for consistent URL generation
+    setCurrentUrl(window.location.origin);
+  }, []);
 
   useEffect(() => {
     if (hotel_id) {
@@ -36,12 +42,14 @@ const GenerateHotelsQr = () => {
             <>
               <img src={data.qrCode} alt="QR Code" className="w-40 sm:w-48 h-auto" />
               <p className="text-sm text-gray-600 mt-2">Scan this QR Code or visit:</p>
-              <Link
-                to={`/AadhaarOTP?token=${hotel_id}`}
+              <a
+                href={`${currentUrl}/AadhaarOTP?token=${hotel_id}`}
                 className="text-blue-500 text-sm sm:text-base"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {data.qrUrl}
-              </Link>
+                {currentUrl}/AadhaarOTP?token={hotel_id}
+              </a>
             </>
           )}
         </div>
