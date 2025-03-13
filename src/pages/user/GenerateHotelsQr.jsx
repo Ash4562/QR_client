@@ -5,13 +5,8 @@ import { useGenerateQRMutation } from "../../redux/hotelUserApi.jsx/userApi";
 const GenerateHotelsQr = () => {
   const location = useLocation();
   const hotelIdFromLocation = location.state?.hotel_id || "";
- 
-
-  console.log("Received hotel_id:", hotelIdFromLocation); // Debugging
-
   const [hotel_id, setHotel_id] = useState(hotelIdFromLocation);
-  const [generateQR, { data, isLoading, error ,isSuccess}] = useGenerateQRMutation();
-  console.log(data);
+  const [generateQR, { data, isLoading, error }] = useGenerateQRMutation();
 
   useEffect(() => {
     if (hotel_id) {
@@ -19,13 +14,6 @@ const GenerateHotelsQr = () => {
       generateQR({ hotel_id });
     }
   }, [hotel_id, generateQR]);
-  const navigate = useNavigate();
-
-  const handleNavigate = () => {
-    if (hotel_id) {
-      navigate("/AadhaarOTP", { state: { hotel_id } }); // hotel_id state में भेजना
-    }
-  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
@@ -44,18 +32,12 @@ const GenerateHotelsQr = () => {
         <div className="mt-4 flex flex-col items-center">
           {isLoading && <p className="text-gray-500">Generating QR Code...</p>}
           {error && <p className="text-red-500 mt-2">Error generating QR</p>}
-
           {data && (
             <>
               <img src={data.qrCode} alt="QR Code" className="w-40 sm:w-48 h-auto" />
               <p className="text-sm text-gray-600 mt-2">Scan this QR Code or visit:</p>
               <Link
-              //  onClick={handleNavigate}
-              //   `https://qr-backend-h6p2.onrender.com/AadhaarOTP?token=${hotel_id}`
-                // to={`/AadhaarOTP`}
                 to={`/AadhaarOTP?token=${hotel_id}`}
-                // to={`/AadhaarOTP?hotel/${hotel_id}`}
-    
                 className="text-blue-500 text-sm sm:text-base"
               >
                 {data.qrUrl}
